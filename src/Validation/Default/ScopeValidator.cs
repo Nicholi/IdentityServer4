@@ -14,7 +14,7 @@ namespace IdentityServer4.Validation
     /// <summary>
     /// Validates scopes
     /// </summary>
-    public class ScopeValidator
+    public class ScopeValidator : IScopeValidator
     {
         private readonly ILogger _logger;
         private readonly IResourceStore _store;
