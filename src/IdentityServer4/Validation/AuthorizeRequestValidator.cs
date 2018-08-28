@@ -15,6 +15,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityServer4.Validation.Interfaces;
 
 namespace IdentityServer4.Validation
 {
@@ -24,7 +25,7 @@ namespace IdentityServer4.Validation
         private readonly IClientStore _clients;
         private readonly ICustomAuthorizeRequestValidator _customValidator;
         private readonly IRedirectUriValidator _uriValidator;
-        private readonly ScopeValidator _scopeValidator;
+        private readonly IScopeValidator _scopeValidator;
         private readonly IUserSession _userSession;
         private readonly ILogger _logger;
 
@@ -35,8 +36,8 @@ namespace IdentityServer4.Validation
             IdentityServerOptions options, 
             IClientStore clients, 
             ICustomAuthorizeRequestValidator customValidator, 
-            IRedirectUriValidator uriValidator, 
-            ScopeValidator scopeValidator,
+            IRedirectUriValidator uriValidator,
+            IScopeValidator scopeValidator,
             IUserSession userSession,
             ILogger<AuthorizeRequestValidator> logger)
         {

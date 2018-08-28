@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.Authentication;
 using static IdentityServer4.Constants;
 using IdentityServer4.Extensions;
 using IdentityServer4.Hosting.FederatedSignOut;
+using IdentityServer4.Validation.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -118,7 +119,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Services.AddTransient<SecretParser>();
             builder.Services.AddTransient<SecretValidator>();
-            builder.Services.AddTransient<ScopeValidator>();
+            builder.Services.AddTransient<IScopeValidator, ScopeValidator>();
             builder.Services.AddTransient<ExtensionGrantValidator>();
             builder.Services.AddTransient<BearerTokenUsageValidator>();
             builder.Services.AddTransient<BackChannelLogoutClient>();

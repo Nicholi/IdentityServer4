@@ -1,4 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -10,6 +10,7 @@ using System.Security.Claims;
 using IdentityModel;
 using System.Linq;
 using System;
+using IdentityServer4.Validation.Interfaces;
 
 namespace IdentityServer4.Validation
 {
@@ -90,7 +91,7 @@ namespace IdentityServer4.Validation
         /// <value>
         /// The validated scopes.
         /// </value>
-        public ScopeValidator ValidatedScopes { get; set; }
+        public IScopeValidator ValidatedScopes { get; set; }
 
         /// <summary>
         /// Sets the client and the appropriate request specific settings.
