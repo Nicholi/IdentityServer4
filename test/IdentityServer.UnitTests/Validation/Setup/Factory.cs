@@ -22,7 +22,7 @@ namespace IdentityServer4.UnitTests.Validation
             return new InMemoryClientStore(TestClients.Get());
         }
 
-        public static ScopeValidator CreateScopeValidator(IResourceStore store)
+        public static IScopeValidator CreateScopeValidator(IResourceStore store)
         {
             return new ScopeValidator(store, TestLogger.Create<ScopeValidator>());
         }
@@ -37,7 +37,7 @@ namespace IdentityServer4.UnitTests.Validation
             IEnumerable<IExtensionGrantValidator> extensionGrantValidators = null,
             ICustomTokenRequestValidator customRequestValidator = null,
             ITokenValidator tokenValidator = null,
-            ScopeValidator scopeValidator = null)
+            IScopeValidator scopeValidator = null)
         {
             if (options == null)
             {
@@ -120,7 +120,7 @@ namespace IdentityServer4.UnitTests.Validation
             IProfileService profile = null,
             ICustomAuthorizeRequestValidator customValidator = null,
             IRedirectUriValidator uriValidator = null,
-            ScopeValidator scopeValidator = null)
+            IScopeValidator scopeValidator = null)
         {
             if (options == null)
             {

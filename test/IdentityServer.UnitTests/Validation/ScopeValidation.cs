@@ -1,4 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using IdentityServer4.Stores;
+using IdentityServer4.Validation;
 
 namespace IdentityServer4.UnitTests.Validation
 {
@@ -234,7 +235,7 @@ namespace IdentityServer4.UnitTests.Validation
         public void ValidateRequiredScopes_required_scopes_present_should_succeed()
         {
             var validator = Factory.CreateScopeValidator(_store);
-            validator.RequestedResources = new Resources(_identityResources, _apiResources);
+            ((ScopeValidator)validator).RequestedResources = new Resources(_identityResources, _apiResources);
             validator.ValidateRequiredScopes(new string[] { "openid", "email", "resource1", "resource2" }).Should().BeTrue();
             validator.ValidateRequiredScopes(new string[] { "openid", "email", "resource1" }).Should().BeTrue();
             validator.ValidateRequiredScopes(new string[] { "openid", "resource1", "resource2" }).Should().BeTrue();
@@ -246,7 +247,7 @@ namespace IdentityServer4.UnitTests.Validation
         public void ValidateRequiredScopes_required_scopes_absent_should_fail()
         {
             var validator = Factory.CreateScopeValidator(_store);
-            validator.RequestedResources = new Resources(_identityResources, _apiResources);
+            ((ScopeValidator)validator).RequestedResources = new Resources(_identityResources, _apiResources);
             validator.ValidateRequiredScopes(new string[] { "email", "resource2" }).Should().BeFalse();
             validator.ValidateRequiredScopes(new string[] { "email", "resource1", "resource2" }).Should().BeFalse();
             validator.ValidateRequiredScopes(new string[] { "openid", "resource2" }).Should().BeFalse();
