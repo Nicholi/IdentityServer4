@@ -1,4 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -8,13 +8,14 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Validation.Interfaces;
 
 namespace IdentityServer4.Validation
 {
     /// <summary>
     /// Validates scopes
     /// </summary>
-    public class ScopeValidator
+    public class ScopeValidator : IScopeValidator
     {
         private readonly ILogger _logger;
         private readonly IResourceStore _store;
